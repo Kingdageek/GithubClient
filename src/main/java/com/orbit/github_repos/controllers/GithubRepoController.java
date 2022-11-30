@@ -1,6 +1,5 @@
 package com.orbit.github_repos.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,11 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.orbit.github_repos.responses.GithubRepoResponse;
 import com.orbit.github_repos.utils.GithubClient;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
 @RequestMapping("/api/v1/github/repos")
+@RequiredArgsConstructor
 public class GithubRepoController {
-    @Autowired
-    private GithubClient githubClient;
+
+    private final GithubClient githubClient;
 
     @GetMapping
     public ResponseEntity<GithubRepoResponse> getGithubRepos(
